@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="org.acme.ProductControllerTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2026-01-07T22:32:13" hostname="symon-550XDA" time="1.587">
+  <properties/>
+  <testcase name="testCreateProductWithValidDetails()" classname="org.acme.ProductControllerTest" time="1.402"/>
+  <testcase name="testProductBuilder()" classname="org.acme.ProductControllerTest" time="0.027"/>
+  <testcase name="testGetProductNotFound()" classname="org.acme.ProductControllerTest" time="0.037"/>
+  <testcase name="testCreateProduct()" classname="org.acme.ProductControllerTest" time="0.025"/>
+  <testcase name="testCreateProductWithEmptyDescription()" classname="org.acme.ProductControllerTest" time="0.025"/>
+  <testcase name="testCreateProductWithLongDetails()" classname="org.acme.ProductControllerTest" time="0.011"/>
+  <testcase name="testCreateProductWithShortDetails()" classname="org.acme.ProductControllerTest" time="0.01"/>
+  <testcase name="testCreateAndGetProduct()" classname="org.acme.ProductControllerTest" time="0.043"/>
+  <system-out><![CDATA[?[35m[Hibernate]?[0m 
+    ?[34mcreate?[0m ?[34mglobal?[0m temporary ?[34mtable?[0m HTE_Product(rn_ ?[34minteger?[0m ?[34mnot?[0m ?[34mnull?[0m, id ?[34mbigint?[0m, description ?[34mvarchar?[0m(255), details ?[34mvarchar?[0m(255), ?[34mprimary?[0m ?[34mkey?[0m (rn_)) TRANSACTIONAL
+?[35m[Hibernate]?[0m 
+    ?[34mdrop?[0m ?[34mtable?[0m ?[34mif?[0m ?[34mexists?[0m Product ?[34mcascade?[0m 
+?[35m[Hibernate]?[0m 
+    ?[34mdrop?[0m ?[34msequence?[0m ?[34mif?[0m ?[34mexists?[0m Product_SEQ
+?[35m[Hibernate]?[0m 
+    ?[34mcreate?[0m ?[34msequence?[0m Product_SEQ ?[34mstart?[0m ?[34mwith?[0m 1 ?[34mincrement?[0m ?[34mby?[0m 50
+?[35m[Hibernate]?[0m 
+    ?[34mcreate?[0m ?[34mtable?[0m Product (
+        id ?[34mbigint?[0m ?[34mnot?[0m ?[34mnull?[0m,
+        description ?[34mvarchar?[0m(255),
+        details ?[34mvarchar?[0m(255),
+        ?[34mprimary?[0m ?[34mkey?[0m (id)
+    )
+19:32:13 INFO  [io.quarkus] quarkus-crud 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.15.1) started in 4.196s. Listening on: http://localhost:8081
+19:32:13 INFO  [io.quarkus] Profile test activated. 
+19:32:13 INFO  [io.quarkus] Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-h2, narayana-jta, rest, rest-jackson, smallrye-context-propagation, vertx]
+19:32:14 DEBUG [or.ac.co.ProductController] Creating product: Product{id=null, description='Valid Description', details='Valid details content'}
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        ?[34mnext?[0m ?[34mvalue?[0m ?[34mfor?[0m Product_SEQ
+?[35m[Hibernate]?[0m 
+    ?[34minsert?[0m 
+    ?[34minto?[0m
+        Product
+        (description, details, id) 
+    ?[34mvalues?[0m
+        (?, ?, ?)
+19:32:15 DEBUG [or.ac.co.ProductController] Creating product: Product{id=null, description='Builder Description', details='Builder Details'}
+?[35m[Hibernate]?[0m 
+    ?[34minsert?[0m 
+    ?[34minto?[0m
+        Product
+        (description, details, id) 
+    ?[34mvalues?[0m
+        (?, ?, ?)
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        p1_0.id,
+        p1_0.description,
+        p1_0.details 
+    ?[34mfrom?[0m
+        Product p1_0 
+    ?[34mwhere?[0m
+        p1_0.id=?
+19:32:15 DEBUG [or.ac.co.ProductController] Creating product: Product{id=null, description='Test Description', details='Test Details'}
+?[35m[Hibernate]?[0m 
+    ?[34minsert?[0m 
+    ?[34minto?[0m
+        Product
+        (description, details, id) 
+    ?[34mvalues?[0m
+        (?, ?, ?)
+19:32:15 DEBUG [or.ac.co.ProductController] Creating product: Product{id=null, description='Test Description for Get', details='null'}
+?[35m[Hibernate]?[0m 
+    ?[34minsert?[0m 
+    ?[34minto?[0m
+        Product
+        (description, details, id) 
+    ?[34mvalues?[0m
+        (?, ?, ?)
+?[35m[Hibernate]?[0m 
+    ?[34mselect?[0m
+        p1_0.id,
+        p1_0.description,
+        p1_0.details 
+    ?[34mfrom?[0m
+        Product p1_0 
+    ?[34mwhere?[0m
+        p1_0.id=?
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
